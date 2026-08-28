@@ -1,136 +1,147 @@
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import Link from "next/link";
 import ProductCard from "../../components/ProductCard";
 import { products } from "../data/products";
 
 export default function WeddingGuestDressesPage() {
-  const weddingDresses = products.filter(
+  const categoryProducts = products.filter(
     (product) => product.category === "Wedding Guest Dresses"
   );
 
   return (
-    <>
-      <Navbar />
+    <main className="min-h-screen bg-[#FAF8F5] text-[#171717]">
 
-      <main className="bg-white pt-20">
+      {/* ================= WEDDING HERO ================= */}
+      <section className="mx-auto max-w-7xl px-8 pt-8 md:px-12 lg:px-16">
+        <div className="relative h-[520px] overflow-hidden md:h-[650px]">
 
-        {/* Editorial Header */}
-        <section className="mx-auto max-w-7xl px-10 py-28">
-          <p className="mb-6 text-xs uppercase tracking-[6px] text-neutral-500">
-            THE WEDDING EDIT
-          </p>
+          <img
+            src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=2000&q=90"
+            alt="Elegant fashion portrait"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
 
-          <h1 className="max-w-4xl font-serif text-6xl leading-[1.05] text-black md:text-8xl">
-            Wedding Guest
-            <br />
-            Dresses
-          </h1>
+          <div className="absolute inset-0 bg-black/10" />
 
-          <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <p className="max-w-xl text-lg leading-8 text-neutral-600">
-              Elegant dresses for ceremonies, garden weddings, destination
-              celebrations, and every beautiful moment in between.
-            </p>
+          <div className="absolute inset-0 flex items-end">
+            <div className="px-8 pb-10 text-white md:px-12 md:pb-14 lg:px-16">
 
-            <p className="text-xs uppercase tracking-[3px] text-neutral-500">
-              {weddingDresses.length} styles
-            </p>
-          </div>
-        </section>
-
-        {/* Editorial Image */}
-        <section className="mx-auto max-w-7xl px-10">
-          <div className="relative h-[500px] overflow-hidden md:h-[650px]">
-            <img
-              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1800"
-              alt="Elegant wedding guest fashion"
-              className="h-full w-full object-cover"
-            />
-
-            <div className="absolute inset-0 bg-black/10" />
-
-            <div className="absolute bottom-10 left-10 max-w-md text-white">
-              <p className="mb-3 text-xs uppercase tracking-[4px]">
+              <p className="text-[11px] uppercase tracking-[5px]">
                 DRESS FOR THE MOMENT
               </p>
 
-              <h2 className="font-serif text-4xl md:text-5xl">
-                Effortless elegance
-              </h2>
+              <h1 className="mt-5 max-w-2xl font-serif text-6xl leading-[0.88] md:text-7xl lg:text-8xl">
+                Effortless
+                <br />
+                elegance
+              </h1>
+
             </div>
           </div>
-        </section>
 
-        {/* Products */}
-        <section className="mx-auto max-w-7xl px-10 py-28">
+        </div>
+      </section>
 
-          <div className="mb-10 flex items-center justify-between border-b border-neutral-200 pb-5">
-            <div>
-              <p className="text-xs uppercase tracking-[3px] text-neutral-500">
-                CURATED FOR YOU
-              </p>
-            </div>
+      {/* ================= OCCASION EDIT ================= */}
+      <section className="mx-auto max-w-7xl px-8 py-20 md:px-12 md:py-24 lg:px-16">
 
-            <button
-              type="button"
-              className="text-xs uppercase tracking-[2px] text-black transition hover:opacity-50"
-            >
-              Sort
-            </button>
-          </div>
+        <div className="grid gap-12 md:grid-cols-2 md:items-end">
 
-          {weddingDresses.length > 0 ? (
-            <div className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
-              {weddingDresses.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="py-20 text-center">
-              <p className="font-serif text-3xl text-neutral-800">
-                New wedding guest styles are coming soon.
-              </p>
-
-              <p className="mt-4 text-neutral-500">
-                Check back soon for our latest curated finds.
-              </p>
-            </div>
-          )}
-        </section>
-
-        {/* Editorial Closing */}
-        <section className="border-t border-neutral-200 bg-[#FAF8F5]">
-          <div className="mx-auto max-w-7xl px-10 py-28 text-center">
-            <p className="mb-5 text-xs uppercase tracking-[5px] text-neutral-500">
-              THE DRESS MUSE JOURNAL
+          <div>
+            <p className="text-[11px] uppercase tracking-[5px] text-[#888888]">
+              THE OCCASION EDIT
             </p>
 
-            <h2 className="mx-auto max-w-3xl font-serif text-5xl leading-tight text-black md:text-6xl">
+            <h2 className="mt-6 font-serif text-5xl leading-[1] md:text-6xl lg:text-7xl">
+              Made for the
+              <br />
+              beautiful invitation.
+            </h2>
+          </div>
+
+          <div>
+            <p className="max-w-xl text-base leading-8 text-[#666666] md:text-lg">
+              Elegant dresses for ceremonies, garden weddings,
+              destination celebrations, and every beautiful moment
+              in between.
+            </p>
+
+            <p className="mt-10 text-[11px] uppercase tracking-[5px] text-[#777777]">
+              {categoryProducts.length} STYLES
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ================= CURATED PRODUCTS ================= */}
+      <section className="mx-auto max-w-7xl px-8 pb-28 md:px-12 lg:px-16">
+
+        <div className="mb-10 flex items-end justify-between border-b border-[#E3E0DB] pb-5">
+
+          <div>
+            <p className="text-[11px] uppercase tracking-[5px] text-[#777777]">
+              CURATED FOR YOU
+            </p>
+          </div>
+
+          <Link
+            href="/shop"
+            className="hidden text-[11px] uppercase tracking-[4px] text-[#555555] transition hover:text-black md:block"
+          >
+            SORT
+          </Link>
+
+        </div>
+
+        <div className="grid grid-cols-1 gap-x-6 gap-y-16 sm:grid-cols-2">
+          {categoryProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
+          ))}
+        </div>
+
+      </section>
+
+      {/* ================= JOURNAL ================= */}
+      <section className="border-t border-[#E3E0DB] bg-[#F3F0EA]">
+
+        <div className="mx-auto max-w-7xl px-8 py-24 md:px-12 md:py-28 lg:px-16">
+
+          <p className="text-[11px] uppercase tracking-[5px] text-[#888888]">
+            THE DRESS MUSE JOURNAL
+          </p>
+
+          <div className="mt-8 grid gap-10 md:grid-cols-2 md:items-end">
+
+            <h2 className="font-serif text-5xl leading-[1] md:text-6xl lg:text-7xl">
               What to wear when
               <br />
               the invitation arrives.
             </h2>
 
-            <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-neutral-600">
-              Discover styling ideas, dress codes, silhouettes, and thoughtful
-              outfit inspiration for your next celebration.
-            </p>
+            <div>
+              <p className="max-w-xl text-base leading-8 text-[#666666]">
+                Discover thoughtful styling ideas, dress-code guidance,
+                and inspiration for your next beautiful occasion.
+              </p>
 
-            <a
-              href="/blog"
-              className="mt-8 inline-block border-b border-black pb-2 text-xs uppercase tracking-[3px] text-black transition hover:opacity-50"
-            >
-              Read the Journal →
-            </a>
+              <Link
+                href="/blog"
+                className="mt-8 inline-block border-b border-[#333333] pb-2 text-[11px] uppercase tracking-[4px]"
+              >
+                Read the Journal →
+              </Link>
+            </div>
+
           </div>
-        </section>
 
-      </main>
+        </div>
 
-      <Footer />
-    </>
+      </section>
+
+    </main>
   );
 }

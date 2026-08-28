@@ -1,11 +1,8 @@
 import Link from "next/link";
-import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
-
       <main className="bg-[#FAF8F5] text-[#171717]">
 
         {/* ================= HERO ================= */}
@@ -49,7 +46,9 @@ export default function Home() {
               </Link>
 
             </div>
+
           </div>
+
         </section>
 
 
@@ -59,6 +58,7 @@ export default function Home() {
           <div className="grid gap-12 md:grid-cols-2 md:items-end">
 
             <div>
+
               <p className="text-xs uppercase tracking-[5px] text-[#8A8A8A]">
                 WELCOME TO DRESS MUSE
               </p>
@@ -68,9 +68,11 @@ export default function Home() {
                 <br />
                 one dress at a time.
               </h2>
+
             </div>
 
             <div>
+
               <p className="max-w-xl text-base leading-8 text-[#666666]">
                 We believe finding a beautiful dress should feel inspiring,
                 not overwhelming. Dress Muse brings together carefully
@@ -84,9 +86,11 @@ export default function Home() {
               >
                 Explore all dresses →
               </Link>
+
             </div>
 
           </div>
+
         </section>
 
 
@@ -98,6 +102,7 @@ export default function Home() {
             <div className="flex items-end justify-between">
 
               <div>
+
                 <p className="text-xs uppercase tracking-[5px] text-[#8A8A8A]">
                   THE COLLECTION
                 </p>
@@ -105,6 +110,7 @@ export default function Home() {
                 <h2 className="mt-4 font-serif text-5xl md:text-6xl">
                   Shop by occasion
                 </h2>
+
               </div>
 
               <Link
@@ -124,6 +130,7 @@ export default function Home() {
                 href="/wedding-guest-dresses"
                 className="group relative block overflow-hidden"
               >
+
                 <img
                   src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1200&q=90"
                   alt="Wedding guest dresses"
@@ -133,6 +140,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/25" />
 
                 <div className="absolute bottom-0 left-0 p-8 text-white">
+
                   <p className="text-xs uppercase tracking-[4px]">
                     COLLECTION 01
                   </p>
@@ -144,7 +152,9 @@ export default function Home() {
                   <p className="mt-4 text-xs uppercase tracking-[3px]">
                     Discover →
                   </p>
+
                 </div>
+
               </Link>
 
 
@@ -153,6 +163,7 @@ export default function Home() {
                 href="/summer-dresses"
                 className="group relative block overflow-hidden"
               >
+
                 <img
                   src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=90"
                   alt="Summer dresses"
@@ -162,6 +173,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/25" />
 
                 <div className="absolute bottom-0 left-0 p-8 text-white">
+
                   <p className="text-xs uppercase tracking-[4px]">
                     COLLECTION 02
                   </p>
@@ -173,7 +185,9 @@ export default function Home() {
                   <p className="mt-4 text-xs uppercase tracking-[3px]">
                     Discover →
                   </p>
+
                 </div>
+
               </Link>
 
             </div>
@@ -186,6 +200,7 @@ export default function Home() {
                 href="/cocktail-dresses"
                 className="group relative block overflow-hidden"
               >
+
                 <img
                   src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=1200&q=90"
                   alt="Cocktail dresses"
@@ -195,6 +210,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/25" />
 
                 <div className="absolute bottom-0 left-0 p-8 text-white">
+
                   <p className="text-xs uppercase tracking-[4px]">
                     COLLECTION 03
                   </p>
@@ -206,7 +222,9 @@ export default function Home() {
                   <p className="mt-4 text-xs uppercase tracking-[3px]">
                     Discover →
                   </p>
+
                 </div>
+
               </Link>
 
 
@@ -215,6 +233,7 @@ export default function Home() {
                 href="/vacation-dresses"
                 className="group relative block overflow-hidden"
               >
+
                 <img
                   src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=90"
                   alt="Vacation dresses"
@@ -224,6 +243,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/25" />
 
                 <div className="absolute bottom-0 left-0 p-8 text-white">
+
                   <p className="text-xs uppercase tracking-[4px]">
                     COLLECTION 04
                   </p>
@@ -235,12 +255,15 @@ export default function Home() {
                   <p className="mt-4 text-xs uppercase tracking-[3px]">
                     Discover →
                   </p>
+
                 </div>
+
               </Link>
 
             </div>
 
           </div>
+
         </section>
 
 
@@ -250,6 +273,7 @@ export default function Home() {
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
 
             <div>
+
               <p className="text-xs uppercase tracking-[5px] text-[#8A8A8A]">
                 THE MUSE NOTE
               </p>
@@ -259,9 +283,11 @@ export default function Home() {
                 <br />
                 effortless.
               </h2>
+
             </div>
 
             <div>
+
               <p className="text-lg leading-9 text-[#666666]">
                 From romantic silhouettes to effortless summer dresses,
                 we curate pieces that make getting dressed feel a little
@@ -275,9 +301,11 @@ export default function Home() {
               >
                 Discover the edit →
               </Link>
+
             </div>
 
           </div>
+
         </section>
 
 
@@ -314,6 +342,7 @@ export default function Home() {
             </div>
 
           </div>
+
         </section>
 
 

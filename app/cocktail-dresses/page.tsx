@@ -1,130 +1,170 @@
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
+import Link from "next/link";
 import ProductCard from "../../components/ProductCard";
 import { products } from "../data/products";
 
 export default function CocktailDressesPage() {
-  const cocktailDresses = products.filter(
+  const categoryProducts = products.filter(
     (product) => product.category === "Cocktail Dresses"
   );
 
   return (
-    <>
-      <Navbar />
+    <main className="min-h-screen bg-[#FAF8F5] text-[#171717]">
 
-      <main className="bg-white pt-20">
+      {/* ================= HERO ================= */}
+      <section className="mx-auto max-w-7xl px-8 pt-8 md:px-12 lg:px-16">
+        <div className="relative h-[65vh] min-h-[500px] overflow-hidden">
 
-        {/* Editorial Header */}
-        <section className="mx-auto max-w-7xl px-10 py-28">
-          <p className="mb-6 text-xs uppercase tracking-[6px] text-neutral-500">
-            THE EVENING EDIT
-          </p>
+          <img
+            src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=2000&q=90"
+            alt="Cocktail dress"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
 
-          <h1 className="max-w-4xl font-serif text-6xl leading-[1.05] text-black md:text-8xl">
-            Cocktail
-            <br />
-            Dresses
-          </h1>
+          <div className="absolute inset-0 bg-black/25" />
 
-          <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <p className="max-w-xl text-lg leading-8 text-neutral-600">
-              Refined silhouettes, elegant details, and effortless pieces for
-              dinners, celebrations, parties, and nights worth dressing for.
-            </p>
+          <div className="relative flex h-full items-end px-8 py-10 text-white md:px-12 md:py-12">
+            <div>
 
-            <p className="text-xs uppercase tracking-[3px] text-neutral-500">
-              {cocktailDresses.length} styles
-            </p>
-          </div>
-        </section>
-
-        {/* Editorial Image */}
-        <section className="mx-auto max-w-7xl px-10">
-          <div className="relative h-[500px] overflow-hidden md:h-[650px]">
-            <img
-              src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=1800"
-              alt="Elegant cocktail fashion"
-              className="h-full w-full object-cover"
-            />
-
-            <div className="absolute inset-0 bg-black/10" />
-
-            <div className="absolute bottom-10 left-10 max-w-md text-white">
-              <p className="mb-3 text-xs uppercase tracking-[4px]">
-                AFTER DARK
+              <p className="text-xs uppercase tracking-[5px]">
+                THE EVENING EDIT
               </p>
 
-              <h2 className="font-serif text-4xl md:text-5xl">
-                Dress for the occasion.
-              </h2>
-            </div>
-          </div>
-        </section>
+              <h1 className="mt-5 max-w-4xl font-serif text-5xl leading-[0.95] md:text-7xl lg:text-8xl">
+                After Dark
+                <br />
+                Dressing.
+              </h1>
 
-        {/* Products */}
-        <section className="mx-auto max-w-7xl px-10 py-28">
-
-          <div className="mb-10 flex items-center justify-between border-b border-neutral-200 pb-5">
-            <p className="text-xs uppercase tracking-[3px] text-neutral-500">
-              CURATED EVENING FINDS
-            </p>
-
-            <button
-              type="button"
-              className="text-xs uppercase tracking-[2px] text-black transition hover:opacity-50"
-            >
-              Sort
-            </button>
-          </div>
-
-          {cocktailDresses.length > 0 ? (
-            <div className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
-              {cocktailDresses.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="py-20 text-center">
-              <p className="font-serif text-3xl text-neutral-800">
-                New evening styles are coming soon.
+              <p className="mt-8 max-w-2xl text-sm leading-7 text-white/90 md:text-base">
+                Polished dresses for cocktail hours, dinner dates,
+                celebrations, and evenings worth dressing up for.
               </p>
 
-              <p className="mt-4 text-neutral-500">
-                Check back soon for our latest curated finds.
-              </p>
             </div>
-          )}
+          </div>
 
-        </section>
+        </div>
+      </section>
 
-        {/* Editorial Closing */}
-        <section className="border-t border-neutral-200 bg-[#FAF8F5]">
-          <div className="mx-auto max-w-7xl px-10 py-28 text-center">
+      {/* ================= INTRO ================= */}
+      <section className="mx-auto max-w-7xl px-8 py-20 md:px-12 lg:px-16">
 
-            <p className="mb-5 text-xs uppercase tracking-[5px] text-neutral-500">
-              THE EVENING EDIT
+        <div className="grid gap-12 md:grid-cols-2 md:items-end">
+
+          <div>
+
+            <p className="text-xs uppercase tracking-[5px] text-[#8A8A8A]">
+              THE COCKTAIL EDIT
             </p>
 
-            <h2 className="mx-auto max-w-3xl font-serif text-5xl leading-tight text-black md:text-6xl">
-              A little drama
+            <h2 className="mt-6 font-serif text-5xl leading-tight md:text-6xl">
+              Made for
               <br />
-              never hurts.
+              memorable nights.
             </h2>
 
-            <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-neutral-600">
-              Discover elegant cocktail dresses designed to make an entrance
-              without trying too hard.
+          </div>
+
+          <div>
+
+            <p className="max-w-xl text-base leading-8 text-[#666666]">
+              Sophisticated silhouettes, feminine details, and
+              effortless pieces designed to make an entrance.
+            </p>
+
+            <p className="mt-8 text-xs uppercase tracking-[4px] text-[#777777]">
+              {categoryProducts.length} CURATED STYLES
             </p>
 
           </div>
-        </section>
 
-      </main>
+        </div>
 
-      <Footer />
-    </>
+      </section>
+
+      {/* ================= PRODUCTS ================= */}
+      <section className="mx-auto max-w-7xl px-8 pb-28 md:px-12 lg:px-16">
+
+        <div className="mb-12 flex items-end justify-between border-b border-[#E3E0DB] pb-5">
+
+          <div>
+
+            <p className="text-xs uppercase tracking-[5px] text-[#8A8A8A]">
+              THE EDIT
+            </p>
+
+            <h2 className="mt-4 font-serif text-4xl md:text-5xl">
+              Evening essentials
+            </h2>
+
+          </div>
+
+          <Link
+            href="/shop"
+            className="hidden border-b border-black pb-2 text-xs uppercase tracking-[3px] md:block"
+          >
+            View all →
+          </Link>
+
+        </div>
+
+        <div className="grid grid-cols-1 gap-x-6 gap-y-16 sm:grid-cols-2">
+
+          {categoryProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
+          ))}
+
+        </div>
+
+      </section>
+
+      {/* ================= JOURNAL ================= */}
+      <section className="bg-[#EDE8E3]">
+
+        <div className="mx-auto max-w-7xl px-8 py-28 md:px-12 lg:px-16">
+
+          <div className="grid gap-12 md:grid-cols-2 md:items-end">
+
+            <div>
+
+              <p className="text-xs uppercase tracking-[5px] text-[#8A8A8A]">
+                THE EVENING JOURNAL
+              </p>
+
+              <h2 className="mt-6 font-serif text-5xl leading-tight md:text-6xl">
+                When the
+                <br />
+                dress code says cocktail.
+              </h2>
+
+            </div>
+
+            <div>
+
+              <p className="max-w-xl text-base leading-8 text-[#666666]">
+                Find the right balance between polished and effortless
+                with our guide to cocktail dressing, silhouettes,
+                styling, and finishing touches.
+              </p>
+
+              <Link
+                href="/blog"
+                className="mt-8 inline-block border-b border-black pb-2 text-xs uppercase tracking-[3px]"
+              >
+                Read the evening guide →
+              </Link>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
   );
 }
