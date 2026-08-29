@@ -43,8 +43,12 @@ export const metadata: Metadata = {
     follow: true,
   },
 
-  verification: {
+   verification: {
     google: "_ZZPyB5IRHkHv4dTXQ0KLmz15se75NvZebdluqUhB9M",
+  },
+
+  other: {
+    "p:domain_verify": "cb8e9f95f3c48cdc13ba8066f20d7f97",
   },
 };
 
