@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 
 export default function Footer() {
@@ -5,7 +6,7 @@ export default function Footer() {
     <footer className="border-t border-[#333333] bg-[#171717] text-white">
       {/* MAIN FOOTER */}
       <div className="mx-auto grid max-w-7xl gap-16 px-8 py-20 md:grid-cols-2 lg:grid-cols-4 lg:px-16">
-        
+
         {/* BRAND */}
         <div className="lg:col-span-2">
           <Link
@@ -67,6 +68,13 @@ export default function Footer() {
             >
               Vacation
             </Link>
+
+            <Link
+              href="/seasonal"
+              className="text-sm text-[#D5D5D5] transition hover:text-white"
+            >
+              Seasonal Collections
+            </Link>
           </div>
         </div>
 
@@ -113,13 +121,8 @@ export default function Footer() {
       {/* COPYRIGHT */}
       <div className="border-t border-[#333333]">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-8 py-6 text-[10px] uppercase tracking-[2px] text-[#777777] md:flex-row md:items-center md:justify-between lg:px-16">
-          <p>
-            © 2026 Dress Muse. All rights reserved.
-          </p>
-
-          <p>
-            Amazon Affiliate Site
-          </p>
+          <p>© 2026 Dress Muse. All rights reserved.</p>
+          <p>Amazon Affiliate Site</p>
         </div>
       </div>
     </footer>

@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import ProductCard from "../../components/ProductCard";
 import { products } from "../data/products";
@@ -77,6 +78,13 @@ export default function ShopPage() {
             className="text-xs uppercase tracking-[2px] text-[#777777] transition hover:text-black"
           >
             Vacation
+          </Link>
+
+          <Link
+            href="/seasonal"
+            className="text-xs uppercase tracking-[2px] text-[#777777] transition hover:text-black"
+          >
+            Seasonal
           </Link>
 
         </div>

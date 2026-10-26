@@ -9,7 +9,7 @@ const stories: Record<
     image: string;
     paragraphs: string[];
     accent: string;
-    layout: "wedding" | "summer" | "cocktail" | "vacation";
+    layout: "wedding" | "summer" | "cocktail" | "vacation" | "fall" | "halloween";
   }
 > = {
   "wedding-guest-dresses": {
@@ -75,6 +75,42 @@ const stories: Record<
       "The goal is simple: pieces that feel beautiful, comfortable, and ready for wherever the day takes you.",
     ],
   },
+  "fall-dresses": {
+    category: "FALL STYLE",
+    title: "The Fall Dress Edit",
+    intro:
+      "A considered guide to sweater dresses, elegant knit silhouettes, and effortless autumn outfits for cooler days.",
+    image:
+      "https://images.unsplash.com/photo-1729754075087-4edec23c4f81?q=80&w=2000&auto=format&fit=crop",
+    accent: "#a37b57",
+    layout: "fall",
+    paragraphs: [
+      "Fall dressing begins with texture and warmth. A cozy sweater dress or softly structured knit can make everyday outfits feel polished without sacrificing comfort.",
+      "For daytime, pair a relaxed cable-knit mini dress with knee-high boots and a long coat. A ribbed midi dress with a waist tie offers a more refined option for work, brunch, or dinner plans.",
+      "Autumn colors bring the season to life. Look for chocolate brown, burgundy, caramel, forest green, and soft neutrals that layer beautifully with your favorite boots and accessories.",
+      "For special occasions, consider a flowing maxi dress or a fitted mermaid silhouette. The best fall dresses transition easily from casual weekends to celebrations with a simple change of shoes and jewelry.",
+    ],
+  },
+
+  "halloween-costume-ideas": {
+    category: "HALLOWEEN STYLE",
+    title: "The Halloween Costume Edit",
+    intro:
+      "Discover Halloween costume ideas for women, from gothic romance and Renaissance-inspired dresses to playful fantasy and pirate looks.",
+    image:
+      "https://images.unsplash.com/photo-1642290460481-76a5f2e18c3e?auto=format&fit=crop&w=2000&q=85",
+    accent: "#b9a3a9",
+    layout: "halloween",
+    paragraphs: [
+      "Halloween is an invitation to explore a different side of personal style. Gothic lace, sweeping Renaissance silhouettes, and imaginative character-inspired costumes each tell a different story.",
+      "For a gothic Halloween outfit, choose dramatic black details, romantic lace, and deep red lipstick. Statement earrings or a vintage-inspired accessory can finish the look without overwhelming it.",
+      "Renaissance and medieval costume dresses create an enchanting alternative. Try braided hair, antique-inspired jewelry, and comfortable boots for a look that feels both romantic and practical.",
+      "If you prefer something playful, pirate costumes and Wonderland-inspired outfits offer room for expressive accessories, hats, themed makeup, and creative styling.",
+      "The best Halloween costume is one that suits your celebration and lets you move comfortably. Consider the weather, footwear, and accessories before choosing your final look.",
+      "Explore the eight curated costumes in the Dress Muse Halloween Collection and discover a look for your next October celebration.",
+    ],
+  },
+
 };
 
 export default async function StoryPage({
@@ -326,6 +362,162 @@ export default async function StoryPage({
             >
               SHOP COCKTAIL DRESSES →
             </Link>
+          </div>
+        </article>
+
+        <JournalFooter dark />
+      </main>
+    );
+  }
+
+  /* =========================================================
+     FALL JOURNAL
+     Warm / textured / autumn editorial
+  ========================================================= */
+
+  if (story.layout === "fall") {
+    return (
+      <main className="bg-[#f5f0e8] text-[#30271f]">
+        <section className="px-6 pb-20 pt-24 md:px-12 md:pb-28 md:pt-32">
+          <div className="mx-auto max-w-[1200px]">
+            <p className="mb-7 text-xs tracking-[0.35em] text-[#9a7555]">
+              THE DRESS MUSE JOURNAL / FALL EDIT
+            </p>
+            <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+              <h1 className="font-serif text-6xl leading-[0.95] tracking-[-0.03em] md:text-8xl">
+                {story.title}
+              </h1>
+              <p className="max-w-md text-base leading-8 text-[#756a5f] md:text-lg">
+                {story.intro}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-6 md:px-12">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <img
+                src={story.image}
+                alt="Autumn fashion inspiration for the Fall Dress Edit"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10">
+                <span className="bg-[#f5f0e8] px-5 py-3 text-xs tracking-[0.3em]">
+                  AUTUMN EDIT
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <article className="px-6 py-24 md:px-12 md:py-32">
+          <div className="mx-auto grid max-w-[1100px] gap-14 md:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="text-xs tracking-[0.35em] text-[#9a7555]">
+                THE AUTUMN NOTE
+              </p>
+              <h2 className="mt-6 font-serif text-4xl leading-tight md:text-5xl">
+                Layers of warmth.
+                <br />
+                Effortless elegance.
+              </h2>
+            </div>
+            <div>
+              {story.paragraphs.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="mb-8 text-base leading-8 text-[#5e554d] md:text-lg md:leading-9"
+                >
+                  {paragraph}
+                </p>
+              ))}
+              <Link
+                href="/seasonal/fall"
+                className="mt-4 inline-block border-b border-[#30271f] pb-2 text-xs tracking-[0.25em]"
+              >
+                SHOP FALL DRESSES →
+              </Link>
+            </div>
+          </div>
+        </article>
+        <JournalFooter />
+      </main>
+    );
+  }
+
+  /* =========================================================
+     HALLOWEEN JOURNAL
+     Gothic / cinematic / dark romantic editorial
+  ========================================================= */
+
+  if (story.layout === "halloween") {
+    return (
+      <main className="bg-[#1b171b] text-[#f5f0eb]">
+        <section className="px-6 pb-20 pt-24 md:px-12 md:pb-28 md:pt-32">
+          <div className="mx-auto max-w-[1200px]">
+            <p className="mb-7 text-xs tracking-[0.35em] text-[#c7aeb5]">
+              THE DRESS MUSE JOURNAL / HALLOWEEN EDIT
+            </p>
+            <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-end">
+              <h1 className="font-serif text-6xl leading-[0.95] tracking-[-0.03em] md:text-8xl">
+                {story.title}
+              </h1>
+              <p className="max-w-md text-base leading-8 text-[#c9bfc3] md:text-lg">
+                {story.intro}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-6 md:px-12">
+          <div className="mx-auto max-w-[1400px]">
+            <div className="relative aspect-[4/5] overflow-hidden md:aspect-[16/10]">
+              <img
+                src={story.image}
+                alt="Woman in a black hat, dark romantic Halloween fashion inspiration"
+                className="h-full w-full object-cover object-center"
+              />
+              <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10">
+                <span className="bg-[#1b171b] px-5 py-3 text-xs tracking-[0.3em] text-[#f5f0eb]">
+                  AFTER DARK
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <article className="px-6 py-24 md:px-12 md:py-32">
+          <div className="mx-auto grid max-w-[1100px] gap-14 md:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="text-xs tracking-[0.35em] text-[#c7aeb5]">
+                THE HALLOWEEN NOTE
+              </p>
+              <h2 className="mt-6 font-serif text-4xl leading-tight md:text-5xl">
+                A little mystery.
+                <br />
+                A lot of magic.
+              </h2>
+            </div>
+            <div>
+              {story.paragraphs.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="mb-8 text-base leading-8 text-[#c9bfc3] md:text-lg md:leading-9"
+                >
+                  {paragraph}
+                </p>
+              ))}
+              <Link
+                href="/seasonal/halloween"
+                className="mt-4 inline-block border-b border-[#f5f0eb] pb-2 text-xs tracking-[0.25em]"
+              >
+                EXPLORE HALLOWEEN COSTUMES →
+              </Link>
+              <p className="mt-10 text-xs leading-6 text-[#a99da3]">
+                As an Amazon Associate, Dress Muse earns from qualifying purchases.
+              </p>
+            </div>
           </div>
         </article>
 
