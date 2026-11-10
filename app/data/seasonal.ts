@@ -40,7 +40,7 @@ export const seasonalCollections: SeasonalCollection[] = [
     eyebrow: "The Holiday Edit",
     description:
       "Elegant festive looks for Christmas parties and holiday celebrations.",
-    active: false,
+    active: true,
   },
 
   {

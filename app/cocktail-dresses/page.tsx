@@ -2,6 +2,12 @@ import Link from "next/link";
 import ProductCard from "../../components/ProductCard";
 import { products } from "../data/products";
 
+export const metadata = {
+  title: "Cocktail Dresses: Polished Party Styles",
+  description:
+    "Curated cocktail dresses from Amazon for parties, dinners and special evenings.",
+};
+
 export default function CocktailDressesPage() {
   const categoryProducts = products.filter(
     (product) => product.category === "Cocktail Dresses"

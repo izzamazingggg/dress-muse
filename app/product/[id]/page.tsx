@@ -6,6 +6,7 @@ import {
   fallProducts,
   halloweenProducts,
 } from "../../data/seasonal-products";
+import { holidayProducts } from "../../data/holiday-products";
 import type { Product } from "../../types/product";
 import ProductDetails from "../../../components/ProductDetails";
 
@@ -18,6 +19,7 @@ export async function generateStaticParams() {
     ...products,
     ...fallProducts,
     ...halloweenProducts,
+    ...holidayProducts,
   ].map((product) => ({
     id: String(product.id),
   }));
@@ -38,14 +40,16 @@ export default async function ProductPage({ params }: Props) {
     (item) => String(item.id) === id
   );
 
+  const holidayProduct = holidayProducts.find(
+    (item) => String(item.id) === id
+  );
+
   const seasonalProduct = fallProduct ?? halloweenProduct;
 
-  if (!existingProduct && !seasonalProduct) {
+  if (!existingProduct && !seasonalProduct && !holidayProduct) {
     notFound();
   }
 
-  // Convert existing product data into the shared Product type.
-  // The category is checked at runtime to avoid an unsafe type cast.
   const validCategories: Product["category"][] = [
     "Wedding Guest Dresses",
     "Summer Dresses",
@@ -79,32 +83,59 @@ export default async function ProductPage({ params }: Props) {
         ...existingProduct,
         category: existingProduct.category as Product["category"],
       }
-    : {
-        id: seasonalProduct!.id,
-        title: seasonalProduct!.title,
-        brand: seasonalProduct!.brand,
-        category:
-          seasonalProduct!.category as Product["category"],
-        price: seasonalProduct!.price,
-        rating: seasonalProduct!.rating,
-        reviews: seasonalProduct!.reviews,
-        image: seasonalProduct!.image,
-        amazonUrl: seasonalProduct!.amazonUrl,
-        description: seasonalProduct!.description,
-        variants: seasonalProduct!.variants,
-      };
+    : holidayProduct
+      ? {
+          id: holidayProduct.id,
+          title: holidayProduct.title,
+          brand: holidayProduct.brand,
+          category: "Holiday Dresses",
+          price: 0,
+          rating: 0,
+          reviews: 0,
+          image: holidayProduct.image,
+          amazonUrl: holidayProduct.amazonUrl,
+          description:
+            "Discover a thoughtfully curated dress for Christmas celebrations, festive gatherings, and memorable holiday occasions.",
+          variants: holidayProduct.colors.map((color) => ({
+            color: color.name,
+            image: color.image,
+            amazonUrl: holidayProduct.amazonUrl,
+          })),
+        }
+      : {
+          id: seasonalProduct!.id,
+          title: seasonalProduct!.title,
+          brand: seasonalProduct!.brand,
+          category:
+            seasonalProduct!.category as Product["category"],
+          price: seasonalProduct!.price,
+          rating: seasonalProduct!.rating,
+          reviews: seasonalProduct!.reviews,
+          image: seasonalProduct!.image,
+          amazonUrl: seasonalProduct!.amazonUrl,
+          description: seasonalProduct!.description,
+          variants: seasonalProduct!.variants,
+        };
 
-  const collectionHref = halloweenProduct
-    ? "/seasonal/halloween"
-    : fallProduct
-      ? "/seasonal/fall"
-      : "/shop";
+  const collectionHref = holidayProduct
+    ? "/seasonal/holiday"
+    : halloweenProduct
+      ? "/seasonal/halloween"
+      : fallProduct
+        ? "/seasonal/fall"
+        : "/shop";
 
-  const collectionName = halloweenProduct
-    ? "Halloween Collection"
-    : fallProduct
-      ? "Fall Collection"
-      : "Shop";
+  const collectionName = holidayProduct
+    ? "Holiday Collection"
+    : halloweenProduct
+      ? "Halloween Collection"
+      : fallProduct
+        ? "Fall Collection"
+        : "Shop";
+
+  const availableColors = holidayProduct
+    ? holidayProduct.colors.map((color) => color.name)
+    : seasonalProduct?.colors ?? [];
 
   return (
     <main className="min-h-screen bg-[#FAF8F5]">
@@ -132,7 +163,7 @@ export default async function ProductPage({ params }: Props) {
 
         <ProductDetails
           product={product}
-          availableColors={seasonalProduct?.colors ?? []}
+          availableColors={availableColors}
         />
       </div>
     </main>

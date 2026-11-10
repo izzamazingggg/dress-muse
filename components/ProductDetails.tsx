@@ -44,6 +44,33 @@ export default function ProductDetails({
     0
   );
 
+  // Request a higher-resolution version of Amazon product images.
+  // Non-Amazon URLs remain unchanged.
+  function getHighResolutionImage(src: string) {
+    if (!src) return src;
+
+    try {
+      const url = new URL(src);
+
+      if (url.hostname !== "m.media-amazon.com") {
+        return src;
+      }
+
+      const match = url.pathname.match(
+        /^(.*\/images\/I\/[^/]+?)\._[^/]+\.(jpg|jpeg|png|webp)$/i
+      );
+
+      if (!match) return src;
+
+      return `${url.origin}${match[1]}._AC_SY1200_.jpg`;
+    } catch {
+      return src;
+    }
+  }
+
+  const highResolutionImage =
+    getHighResolutionImage(currentImage);
+
   function selectVariant(index: number) {
     if (hasImageVariants) {
       setSelectedVariantIndex(index);
@@ -51,25 +78,37 @@ export default function ProductDetails({
   }
 
   return (
-    <div className="grid items-start gap-10 pb-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+    <div className="grid items-start gap-8 pb-20 lg:grid-cols-2 lg:gap-14">
 
-      {/* LARGE PRODUCT IMAGE */}
-      <div className="lg:sticky lg:top-8">
-        <div className="aspect-[3/4] overflow-hidden bg-[#F1EEE8]">
+      {/* PRODUCT IMAGE */}
+      <div className="min-w-0">
+        <div className="flex h-[400px] items-center justify-center overflow-hidden bg-[#F1EEE8] p-4 sm:h-[520px] md:h-[600px] lg:sticky lg:top-8 lg:h-[min(75vh,680px)]">
           <img
-            src={currentImage}
+            key={currentImage}
+            src={highResolutionImage}
             alt={`${product.title}${
               selectedVariant
                 ? ` in ${selectedVariant.color}`
                 : ""
             }`}
             className="h-full w-full object-contain"
+            onError={(event) => {
+              const image = event.currentTarget;
+
+              if (image.src !== currentImage) {
+                image.src = currentImage;
+              }
+            }}
           />
         </div>
+
+        <p className="mt-3 text-center text-[11px] text-[#888888]">
+          Product imagery provided by the retailer.
+        </p>
       </div>
 
       {/* PRODUCT INFORMATION */}
-      <div className="pt-2 lg:pt-5">
+      <div className="min-w-0 pt-2 lg:pt-5">
 
         <p className="text-[10px] uppercase tracking-[3px] text-[#9B948A]">
           The Dress Muse Edit
@@ -93,7 +132,10 @@ export default function ProductDetails({
             <div className="flex items-center justify-between gap-3">
 
               <p className="text-[11px] uppercase tracking-[1.5px] text-[#777777]">
-                {hasImageVariants ? "Color:" : "Available Colors"}
+                {hasImageVariants
+                  ? "Color:"
+                  : "Available Colors"}
+
                 {hasImageVariants && (
                   <span className="ml-1 text-[#171717]">
                     {selectedVariant?.color}
@@ -110,7 +152,6 @@ export default function ProductDetails({
             </div>
 
             <div className="mt-4 flex flex-wrap gap-2">
-
               {hasImageVariants
                 ? visibleColors.map((color, index) => {
                     const variant = variants[index];
@@ -182,8 +223,8 @@ export default function ProductDetails({
 
             {!hasImageVariants && (
               <p className="mt-4 text-xs leading-6 text-[#888888]">
-                Color availability may vary. Select your preferred
-                color on Amazon before purchasing.
+                Color availability may vary. Select your
+                preferred color on Amazon before purchasing.
               </p>
             )}
           </div>

@@ -2,6 +2,12 @@ import Link from "next/link";
 import ProductCard from "../../components/ProductCard";
 import { products } from "../data/products";
 
+export const metadata = {
+  title: "Vacation Dresses: Beach and City Break Styles",
+  description:
+    "Curated vacation dresses from Amazon for beach days, resort trips and city breaks.",
+};
+
 export default function VacationDressesPage() {
   const categoryProducts = products.filter(
     (product) => product.category === "Vacation Dresses"

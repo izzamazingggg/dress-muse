@@ -1,5 +1,12 @@
 import Link from "next/link";
 
+const occasions = [
+  { label: "Wedding Guest", href: "/wedding-guest-dresses" },
+  { label: "Holiday Party", href: "/seasonal" },
+  { label: "Cocktail", href: "/cocktail-dresses" },
+  { label: "Vacation", href: "/vacation-dresses" },
+];
+
 export default function Home() {
   return (
     <>
@@ -10,46 +17,70 @@ export default function Home() {
 
           <img
             src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=2000&q=90"
-            alt="Elegant fashion editorial"
+            alt="Woman in an elegant dress, Dress Muse curated dresses"
             className="absolute inset-0 h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/5" />
 
-          <div className="relative mx-auto flex min-h-[calc(100vh-80px)] max-w-7xl items-end px-8 py-16 md:px-12 lg:px-16">
+          <div className="relative mx-auto flex min-h-[calc(100vh-80px)] max-w-7xl items-end px-6 py-12 md:px-12 md:py-16 lg:px-16">
 
             <div className="max-w-2xl text-white">
 
-              <p className="mb-5 text-xs uppercase tracking-[6px]">
-                THE DRESS MUSE EDIT
+              <p className="mb-5 text-xs uppercase tracking-[4px]">
+                Wedding guest, holiday &amp; cocktail dresses
               </p>
 
-              <h1 className="font-serif text-6xl leading-[0.95] md:text-7xl lg:text-8xl">
+              <h1 className="font-serif text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
                 Dresses
                 <br />
-                worth
-                <br />
-                discovering.
+                worth discovering.
               </h1>
 
-              <p className="mt-7 max-w-lg text-sm leading-7 md:text-base">
+              <p className="mt-6 max-w-lg text-base leading-7 md:text-lg">
                 A curated edit of beautiful dresses for weddings,
                 summer days, evenings, vacations, and everything
                 in between.
               </p>
 
-              <Link
-                href="/shop"
-                className="mt-8 inline-block border border-white px-8 py-4 text-xs uppercase tracking-[3px] transition hover:bg-white hover:text-black"
-              >
-                Shop the collection
-              </Link>
+              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <Link
+                  href="/shop"
+                  className="inline-block bg-white px-8 py-4 text-xs font-semibold uppercase tracking-[3px] text-black transition hover:bg-neutral-200"
+                >
+                  Shop all dresses
+                </Link>
+
+                <Link
+                  href="/blog"
+                  className="border-b border-white pb-1 text-xs uppercase tracking-[3px]"
+                >
+                  Read the Journal
+                </Link>
+              </div>
 
             </div>
 
           </div>
 
         </section>
+
+
+        {/* ================= OCCASION TILES ================= */}
+        <nav
+          aria-label="Shop by occasion"
+          className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-6 py-8 md:grid-cols-4 md:gap-4 md:px-12 lg:px-16"
+        >
+          {occasions.map((o) => (
+            <Link
+              key={o.href}
+              href={o.href}
+              className="border border-neutral-300 bg-white px-4 py-5 text-center text-xs uppercase tracking-[3px] transition hover:border-black hover:bg-black hover:text-white"
+            >
+              {o.label}
+            </Link>
+          ))}
+        </nav>
 
 
         {/* ================= INTRO ================= */}

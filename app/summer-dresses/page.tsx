@@ -2,6 +2,12 @@ import Link from "next/link";
 import ProductCard from "../../components/ProductCard";
 import { products } from "../data/products";
 
+export const metadata = {
+  title: "Summer Dresses: Easy, Beautiful Amazon Finds",
+  description:
+    "Curated summer dresses from Amazon for sunny days, brunches and warm evenings.",
+};
+
 export default function SummerDressesPage() {
   const categoryProducts = products.filter(
     (product) => product.category === "Summer Dresses"

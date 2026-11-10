@@ -2,6 +2,12 @@ import Link from "next/link";
 import ProductCard from "../../components/ProductCard";
 import { products } from "../data/products";
 
+export const metadata = {
+  title: "Wedding Guest Dresses: Elegant Amazon Finds",
+  description:
+    "Curated wedding guest dresses from Amazon for garden, formal and evening weddings. Browse styles by occasion and find your look.",
+};
+
 export default function WeddingGuestDressesPage() {
   const categoryProducts = products.filter(
     (product) => product.category === "Wedding Guest Dresses"

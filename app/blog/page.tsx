@@ -1,5 +1,10 @@
-
 import Link from "next/link";
+
+export const metadata = {
+  title: "The Journal: Style Notes and Dress Ideas",
+  description:
+    "Style notes, dress-code guidance and curated edits for weddings, parties, summer and travel.",
+};
 
 const journalPosts = [
   {
@@ -41,26 +46,6 @@ const journalPosts = [
       "Relaxed vacation styles for beach days, city breaks, dinners, and everything on your itinerary.",
     image:
       "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    slug: "fall-dresses",
-    number: "05",
-    category: "FALL STYLE",
-    title: "The Fall Dress Edit",
-    description:
-      "Discover cozy sweater dresses, elegant knit silhouettes, and rich autumn colors for effortless fall outfits and seasonal celebrations.",
-    image:
-      "https://images.unsplash.com/photo-1729754075087-4edec23c4f81?q=80&w=2000&auto=format&fit=crop",
-  },
-  {
-    slug: "halloween-costume-ideas",
-    number: "06",
-    category: "HALLOWEEN STYLE",
-    title: "The Halloween Costume Edit",
-    description:
-      "Discover elegant Halloween costume ideas for women, from gothic romance and Renaissance-inspired dresses to enchanting fantasy looks and statement pirate costumes.",
-    image:
-      "https://images.unsplash.com/photo-1642290460481-76a5f2e18c3e?auto=format&fit=crop&w=1200&q=85",
   },
 ];
 
